@@ -1,0 +1,44 @@
+{
+    "name": "htmldocs-server",
+    "version": "0.1.0",
+    "description": "Local HTMLDocs-compatible API server powered by Bun.",
+    "type": "module",
+    "private": false,
+    "main": "./dist/server.js",
+    "types": "./dist/server.d.ts",
+    "files": [
+        "dist",
+        "README.md"
+    ],
+    "engines": {
+        "bun": ">=1.1.0"
+    },
+    "scripts": {
+        "dev": "bun run --hot src/server.ts",
+        "build": "tsc -p tsconfig.json",
+        "check": "tsc --noEmit",
+        "start": "bun ./dist/server.js",
+        "prestart": "bun run build",
+        "prepublishOnly": "bun run build"
+    },
+    "dependencies": {
+        "@htmldocs/render": "0.2.30",
+        "autoprefixer": "^10.4.19",
+        "esbuild": "^0.21.3",
+        "esbuild-style-plugin": "^1.6.3",
+        "hono": "^4.6.4",
+        "playwright": "^1.44.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "tailwindcss": "^3.4.3",
+        "zod": "^3.23.8"
+    },
+    "devDependencies": {
+        "@types/node": "^20.16.5",
+        "bun-types": "^1.1.15",
+        "typescript": "^5.4.5"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

@@ -1,6 +1,6 @@
-## HTMLDocs Local API Server
+## htmldocs Local API Server
 
-This Bun-powered service exposes your local `@templates` collection through an HTTP API compatible with the hosted HTMLDocs endpoints. It renders the React templates directly from disk using the HTMLDocs renderer and Playwright to emit PDFs.
+This Bun-powered service exposes your local `@templates` collection through an HTTP API compatible with the hosted [htmldocs](https://htmldocs.com) endpoints. It renders the React templates directly from disk using the HTMLDocs renderer and Playwright to emit PDFs.
 
 ### Prerequisites
 

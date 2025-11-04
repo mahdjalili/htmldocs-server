@@ -171,10 +171,3 @@ export default {
     port: Number(process.env.PORT ?? 4000),
     fetch: app.fetch,
 };
-
-if (import.meta.main) {
-    Bun.serve({
-        port: Number(process.env.PORT ?? 4000),
-        fetch: app.fetch,
-    });
-}

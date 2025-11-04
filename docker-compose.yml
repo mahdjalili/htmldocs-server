@@ -1,0 +1,32 @@
+services:
+    htmldocs-server:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "4000:4000"
+        volumes:
+            # Mount templates directory from host
+            # Adjust the path to point to your templates directory
+            - ../templates:/templates:ro
+        environment:
+            - PORT=4000
+            - HTMDOCS_TEMPLATES_ROOT=/templates
+            # Optional: Set API key for authentication
+            # - HTMDOCS_API_KEY=your-secret-key
+        restart: unless-stopped
+        stdin_open: true
+        tty: true
+        networks:
+            - traefik-net
+        labels:
+            - "traefik.enable=true"
+
+            - "traefik.http.routers.htmldocs.rule=Host(`htmldocs.uln.me`)"
+            - "traefik.http.routers.htmldocs.entrypoints=websecure"
+            - "traefik.http.routers.htmldocs.tls=true"
+            - "traefik.http.services.htmldocs.loadbalancer.server.port=4000"
+            - "traefik.http.routers.htmldocs.service=htmldocs"
+networks:
+    traefik-net:
+        external: true

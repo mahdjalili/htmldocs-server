@@ -1,7 +1,7 @@
 {
     "name": "htmldocs-server",
     "version": "0.1.0",
-    "description": "Local HTMLDocs-compatible API server powered by Bun.",
+    "description": "Local htmldocs-compatible API server powered by Bun.",
     "type": "module",
     "private": false,
     "main": "./dist/server.js",

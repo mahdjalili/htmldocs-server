@@ -30,6 +30,61 @@ bun run dev
 bun run start
 ```
 
+### Docker
+
+#### Prerequisites
+
+-   Docker and Docker Compose installed
+-   Templates directory available on your host machine
+
+#### Building the Docker image
+
+```sh
+docker build -t htmldocs-server .
+```
+
+#### Running with Docker
+
+```sh
+docker run -p 4000:4000 \
+  -v /path/to/your/templates:/templates:ro \
+  -e HTMDOCS_API_KEY=your-secret-key \
+  htmldocs-server
+```
+
+Replace `/path/to/your/templates` with the absolute path to your templates directory on the host machine.
+
+#### Using Docker Compose
+
+The easiest way to run the server is using Docker Compose:
+
+```sh
+docker compose up
+```
+
+This will:
+
+-   Build the image (if needed)
+-   Mount the `../templates` directory as a read-only volume
+-   Start the server on port 4000
+
+You can customize the setup by editing `docker-compose.yml`:
+
+-   Change the templates path in the `volumes` section
+-   Set environment variables like `HTMDOCS_API_KEY`
+-   Adjust the port mapping
+
+#### Docker Configuration
+
+The Docker image:
+
+-   Uses Bun 1.3 as the base image
+-   Includes all Playwright dependencies and Chromium browser
+-   Mounts templates as a read-only volume at `/templates`
+-   Defaults to port 4000 (configurable via `PORT` env var)
+
+Templates are mounted as a volume, so changes to your templates on the host are immediately available without rebuilding the image.
+
 ### API
 
 #### Generate Document PDF
